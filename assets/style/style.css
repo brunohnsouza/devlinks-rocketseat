@@ -1,0 +1,379 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 
+  =====================
+  VARIÁVEIS (VARIABLES)
+  =====================
+ */
+
+:root {
+  font-size: 62.5%;
+    /* 1rem == 10px */
+  --text-color: #fff;
+  --bg-url: url("/assets/bg-mobile-dark.jpg");
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url("/assets/moon-stars.svg");
+  --brazil-flag-url: url("/assets/brazil-flag.png");
+  --eua-flag-url: url("/assets/eua-flag.png");
+}
+
+/* 
+  ============
+  LIGHT | DARK
+  ============
+ */
+
+.light {
+  --text-color: #000;
+  --bg-url: url("/assets/bg-mobile-light.jpg");
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: url("/assets/sun.svg");
+}
+
+body {
+  /** 1: 
+    * background-image: url("/assets/bg-mobile.jpg");
+    * background-repeat: no-repeat;
+    * background-position: top center;
+    * background-size: cover; 
+  */
+
+  /** 2 (Shothand):
+    * background: color image repeat position/size
+  */
+  background: var(--bg-url) no-repeat top center/cover;
+  height: 100vh;
+}
+
+body * {
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+}
+
+#container {
+  width: 100%;
+  max-width: 58.8rem;
+  margin: 5.6rem auto 0; 
+  padding: 0 2.4rem;
+}
+
+#container > ul {
+  list-style: none;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+
+  padding: 2.4rem 0;
+}
+
+#container > ul > li > a {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+
+  padding: 1.6rem 2.4rem;
+
+  background: var(--surface-color);
+  border: .1rem solid var(--stroke-color);
+  border-radius: .8rem;
+
+  backdrop-filter: blur(.4rem);
+  -webkit-backdrop-filter: blur(.4rem); 
+
+  text-decoration: none;
+  line-height: 2.4rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+
+  transition: background .4s;
+}
+#container > ul > li > a:hover {
+  background: var(--surface-color-hover);
+  border: 0.15rem solid var(--text-color);
+}
+
+/* 
+  ======================
+  LINGUAGENS (LANGUAGES)
+  ======================
+ */
+
+.disable {
+  display: none;
+}
+
+.enable {
+  display: block;
+}
+
+#languages {
+  position: relative;
+  width: 14.0rem;
+  font-weight: 400;
+}
+
+.language-selected {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-size: 1.6rem;
+  color: var(--text-color);
+  cursor: pointer;
+}
+.language-selected:hover{
+  background: var(--highlight-color);
+}
+
+.language-selected::before {
+  content: "";
+  display: inline-block;
+  min-width: 3.2rem;
+  min-height: 3.2rem;
+  background: var(--brazil-flag-url) no-repeat center/contain;
+}
+
+.language-selected > .caret {
+  width: 0;
+  height: 0;
+  border-left: .5rem solid transparent;
+  border-right: .5rem solid transparent;
+  border-top: .6rem solid var(--text-color);
+
+  transition: transform .4s;
+}
+
+/**
+  =======================================
+  JAVASCRIPT FUNÇÃO (JAVASCRIPT FUNCTION)
+  =======================================
+ */
+
+/* BANDEIRAS (FLAGS) */
+.language-selected.change-br::before {
+  background-image: url("/assets/brazil-flag.png");
+}
+.language-selected.change-en::before {
+  background-image: url("/assets/eua-flag.png");
+}
+
+/* ROTAÇÃO SETA (ARROW ROTATION) */
+.caret-rotate {
+  transform: rotate(180deg);
+}
+/* --------------------------------------*/
+
+#languages > ul {
+  position: absolute;
+  z-index: 2;
+
+  width: 14.0rem;
+
+  margin-top: .4rem;
+  border: 0.1rem solid var(--stroke-color);
+  background-color: #fff;
+  box-shadow: 0 0.1rem 1.0rem var(--highlight-color);
+}
+
+#languages > ul > li {
+  list-style: none;
+}
+#languages > ul > li:hover {
+  background-color: #e7e7e7;
+}
+
+#languages > ul > li > a {
+  display: block;
+
+  text-decoration: none;
+  font-size: 1.6rem;
+  color: #000;
+
+  padding-top: 0.5rem 1.0rem;
+}
+
+#languages > ul > li > a::before {
+  content: "";
+  display: inline-block;
+  width: 2.5rem;
+  height: 2.5rem;
+  vertical-align: middle;
+  margin: 1rem;
+}
+
+a.br::before {
+  background: var(--brazil-flag-url) no-repeat center/contain;
+}
+
+a.en::before {
+  background: var(--eua-flag-url) no-repeat center/contain;
+}
+
+/* 
+  ================
+  PERFIL (PROFILE)
+  ================
+ */
+
+#profile {
+  text-align: center;
+  padding: 2.4rem;
+}
+
+#profile > img {
+  width: 11.2rem;
+}
+
+#profile > p {
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  margin-top: 0.8rem;
+}
+
+#profile > span {
+  font-weight: 300;
+  font-size: 1.6rem;
+}
+
+/* 
+  ==============================
+  BOTÃO SWITCH (SWITCH BUTTON) -
+  LIGHT | DARK
+  ==============================
+ */
+
+#switch {
+  position: relative;
+
+  width: 6.4rem;
+
+  margin: 0.4rem auto;
+}
+
+#switch > button {
+  width: 3.2rem;
+  height: 3.2rem;
+  background: #fff var(--switch-bg-url) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 1;
+
+  transform: translateY(-50%);
+
+  animation: slide-back .4s;
+}
+#switch > button:hover {
+  outline: 0.8rem solid var(--highlight-color);
+}
+
+.light #switch button {
+  animation: slide-in .4s forwards;
+}
+
+#switch > span {
+  display: block;
+  width: 6.4rem;
+  height: 2.4rem;
+  background: var(--surface-color);
+  border: 0.1rem solid var(--stroke-color);
+  backdrop-filter: blur(0.4rem);
+  -webkit-backdrop-filter: blur(0.4rem);
+  border-radius: 999.9rem;
+}
+
+/* 
+  ============================
+  REDES SOCIAIS (SOCIAL MEDIA)
+  ============================
+ */
+
+#social-links {
+  display: flex;
+  justify-content: center;
+
+  padding: 2.4rem 0;
+
+  font-size: 2.4rem;
+}
+
+#social-links > a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.6rem;
+
+  transition: background .4s;
+  border-radius: 50%;
+}
+#social-links > a:hover {
+  background: var(--highlight-color);
+}
+
+/* 
+  ===============
+  RODAPÉ (FOOTER)
+  ===============
+ */
+
+footer {
+  padding: 2.4rem 0;
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+/* 
+  ===============================
+  RESPONSIVIDADE (RESPONSIBILITY)
+  ===============================
+ */
+
+@media (min-width: 700px) {
+  :root {
+    --bg-url: url("/assets/bg-desktop-dark.jpg");
+  }
+
+  .light {
+    --bg-url: url("/assets/bg-desktop-light.jpg");
+  }
+}
+
+/* 
+  ====================
+  ANIMAÇÃO (ANIMATION)
+  ====================
+ */
+
+ @keyframes slide-in {
+  from{
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+ }
+
+ @keyframes slide-back {
+  from{
+    left: 50%;
+  }
+  to {
+    left: 0;
+  }
+ }
