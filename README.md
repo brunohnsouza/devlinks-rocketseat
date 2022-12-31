@@ -36,7 +36,7 @@ This project was developed with the following technologies:
 
 DevLinks is a link aggregator to use as an online business card.
 
-- [See the project online](#)
+- [See the project online](https://devlinksbruno.netlify.app/#)
 
 - [View course lessons](https://lp.rocketseat.com.br/devlinks/inscricao?utm_source=github&utm_medium=descricao&utm_campaign=capture-devlinks&utm_term=organic&utm_content=descricao-github-mayk-brito)
 
